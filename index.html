@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>카드형 반응형 페이지</title>
+    <style>
+        /* 1. 기본 스타일 리셋 및 폰트 설정 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box; /* 패딩과 테두리를 포함한 크기 계산 */
+        }
+
+        body {
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: #f8f9fa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        /* 2. 카드 컨테이너 (그리드 레이아웃) */
+        .card-wrapper {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* 가로로 3개 배치 */
+            gap: 30px; /* 카드 간 간격 */
+            max-width: 1200px;
+            width: 100%;
+        }
+
+        /* 3. 개별 카드 스타일 */
+        .card {
+            background-color: #ffffff;
+            border-radius: 15px; /* 모서리 둥글게 */
+            overflow: hidden; /* 내부 요소(이미지)가 둥근 모서리를 벗어나지 않게 함 */
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08); /* 그림자 적용 */
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease; /* 호버 시 애니메이션 */
+        }
+
+        .card:hover {
+            transform: translateY(-10px); /* 호버 시 위로 살짝 이동 */
+        }
+
+        /* 4. 상단: 이미지 영역 */
+        .card-image {
+            width: 100%;
+            height: 200px; /* 고정 높이 */
+            overflow: hidden;
+        }
+
+        .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* 비율 유지하며 영역 채움 */
+        }
+
+        /* 5. 중단: 설명 텍스트 영역 */
+        .card-content {
+            padding: 20px;
+            flex-grow: 1; /* 텍스트 양이 달라도 버튼 위치를 맞추기 위해 확장 */
+        }
+
+        .card-content h2 {
+            font-size: 1.5rem;
+            margin-bottom: 12px;
+            color: #333;
+        }
+
+        .card-content p {
+            font-size: 1rem;
+            color: #666;
+            line-height: 1.6; /* 가독성 좋은 줄 간격 */
+        }
+
+        /* 6. 하단: 버튼 영역 */
+        .card-footer {
+            padding: 20px;
+            text-align: center; /* 버튼 중앙 정렬 */
+            border-top: 1px solid #f1f1f1;
+        }
+
+        .btn-link {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: #4a90e2; /* 기본 버튼 색상 */
+            color: white;
+            text-decoration: none; /* 링크 밑줄 제거 */
+            border-radius: 25px;
+            font-weight: bold;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .btn-link:hover {
+            background-color: #357abd; /* 호버 시 더 어두운 색상 */
+            box-shadow: 0 5px 15px rgba(74, 144, 226, 0.4);
+        }
+
+        /* 7. 반응형 디자인 (모바일 대응) */
+        @media (max-width: 900px) {
+            .card-wrapper {
+                grid-template-columns: repeat(2, 1fr); /* 태블릿: 2열 */
+            }
+        }
+
+        @media (max-width: 600px) {
+            .card-wrapper {
+                grid-template-columns: 1fr; /* 모바일: 1열(세로 정렬) */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 카드 전체를 감싸는 컨테이너 -->
+    <div class="card-wrapper">
+        
+        <!-- 카드 1 -->
+        <article class="card">
+            <div class="card-image">
+                <img src="https://picsum.photos/id/1/400/300" alt="곱셈공식 조립 게임">
+            </div>
+            <div class="card-content">
+                <h2>곱셈공식 조립 게임</h2>
+                <p>카드를 조립하며 곱셈공식을 재미있게 배워보세요! 드래그 앤 드롭으로 식을 완성할 수 있습니다.</p>
+            </div>
+            <div class="card-footer">
+                <a href="activity.html" class="btn-link">게임 시작하기</a>
+            </div>
+        </article>
+
+        <!-- 카드 2 -->
+        <article class="card">
+            <div class="card-image">
+                <img src="https://picsum.photos/id/2/400/300" alt="서비스 이미지 2">
+            </div>
+            <div class="card-content">
+                <h2>커뮤니티</h2>
+                <p>다양한 분야의 전문가들과 소통하며 지식을 나누세요. 함께 성장하는 즐거움을 누릴 수 있습니다.</p>
+            </div>
+            <div class="card-footer">
+                <a href="#" class="btn-link">접속하기</a>
+            </div>
+        </article>
+
+        <!-- 카드 3 -->
+        <article class="card">
+            <div class="card-image">
+                <img src="https://picsum.photos/id/3/400/300" alt="서비스 이미지 3">
+            </div>
+            <div class="card-content">
+                <h2>프로젝트 가이드</h2>
+                <p>실전 프로젝트를 통해 실력을 향상시키세요. 단계별 가이드와 피드백이 준비되어 있습니다.</p>
+            </div>
+            <div class="card-footer">
+                <a href="#" class="btn-link">접속하기</a>
+            </div>
+        </article>
+
+    </div>
+
+</body>
+</html>
